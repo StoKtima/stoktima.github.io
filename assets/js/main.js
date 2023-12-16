@@ -71,7 +71,13 @@
     let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
 
-    countdown.innerHTML = output.replace('%d', days).replace('%h', hours).replace('%m', minutes).replace('%s', seconds);
+    if(days < 0){
+      countdown.innerHTML = output.replace('%d', 0).replace('%h', 0).replace('%m', 0).replace('%s', 0);
+    } else {
+      countdown.innerHTML = output.replace('%d', days).replace('%h', hours).replace('%m', minutes).replace('%s', seconds);
+    }
+
+    
   }
   countDownDate();
   setInterval(countDownDate, 1000);
